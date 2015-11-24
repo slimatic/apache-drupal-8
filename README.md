@@ -18,6 +18,7 @@ docker run --name=drupal8 --link=mysql:mysql -d espressodev/apache-drupal-8:late
 
 ```bash
 docker exec -it drupal bash
-cd /var/www
-drupal site:new html
+cd /tmp
+drupal site:new mysite
+cp -R mysite/* /var/www/html
 ```
