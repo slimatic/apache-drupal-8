@@ -11,18 +11,26 @@ RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libpq-dev \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
 	&& docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip
 
-# Drush
 WORKDIR /tmp
+
+#Composer
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
+#Set Composer Paths
+RUN export PATH="/home/root/.composer/vendor/bin:$PATH"
+RUN echo "export PATH=\"/home/root/.composer/vendor/bin:$PATH\"" >> ~/.bashrc
 
-RUN export PATH="$HOME/.composer/vendor/bin:$PATH"
-RUN echo "export PATH=\"$HOME/.composer/vendor/bin:$PATH\"" >> ~/.bashrc
+#Install Drush via composer
 RUN composer global require drush/drush:dev-master
 RUN composer global update
 RUN ln -sf ~/.composer/vendor/bin/drush /usr/bin/drush
 
+
+#Install Drupal Console
+RUN echo "*** INSTALLING DRUPAL CONSOLE... ***"
+RUN curl -LSs http://drupalconsole.com/installer | php
+RUN mv console.phar /usr/local/bin/drupal
 
 
 # set recommended PHP.ini settings
