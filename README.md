@@ -13,7 +13,7 @@ docker run -v "$3:/var/www/html" --link=mysql:mysql -d espressodev/apache-drupal
 Run and install Drupal 8 with Drupal Console
 
 ```bash
-docker --name=drupal8 run --link=mysql:mysql -d espressodev/apache-drupal-8:latest
+docker run --name=drupal8 --link=mysql:mysql -d espressodev/apache-drupal-8:latest
 ```
 
 ```bash
