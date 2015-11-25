@@ -28,7 +28,6 @@ RUN ln -sf ~/.composer/vendor/bin/drush /usr/bin/drush
 
 
 #Install Drupal Console
-RUN echo "*** INSTALLING DRUPAL CONSOLE... ***"
 RUN curl -LSs http://drupalconsole.com/installer | php
 RUN mv console.phar /usr/local/bin/drupal
 
