@@ -7,7 +7,7 @@ Apache Docker Container for Drupal 8 with Drush & Drupal Console
 ## Running Console
 Run with local volume for web directory
 ```bash
-docker run -v "$3:/var/www/html" --link=mysql:mysql -d espressodev/apache-drupal-8:latest
+docker run -v "application:/var/www/html" --link=mysql:mysql -d espressodev/apache-drupal-8:latest
 ```
 
 Run and install Drupal 8 with Drupal Console
