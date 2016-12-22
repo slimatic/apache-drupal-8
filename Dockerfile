@@ -36,7 +36,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 
 
 #Install Drush via composer
-RUN composer global require drush/drush:dev-master
+RUN composer global require drush/drush
 RUN composer global update
 RUN ln -sf ~/.composer/vendor/bin/drush /usr/bin/drush
 
