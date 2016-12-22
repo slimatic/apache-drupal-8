@@ -14,30 +14,17 @@ RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libpq-dev mysq
 WORKDIR /tmp
 
 #Composer
-#RUN curl -sS https://getcomposer.org/installer | php
-#RUN mv composer.phar /usr/local/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
 
 #Set Composer Paths
-#RUN export PATH="/home/root/.composer/vendor/bin:$PATH"
-#RUN echo "export PATH=\"/home/root/.composer/vendor/bin:$PATH\"" >> ~/.bashrc
-
-ENV COMPOSER_HOME /composer
-
-# Add global binary directory to PATH and make sure to re-export it
-ENV PATH /composer/vendor/bin:$PATH
-
-# Allow Composer to be run as root
-ENV COMPOSER_ALLOW_SUPERUSER 1
-
-# Setup the Composer installer
-RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
-  && curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
-  && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); echo 'Invalid installer' . PHP_EOL; exit(1); }"
-
+RUN export PATH="/home/root/.composer/vendor/bin:$PATH"
+RUN echo "export PATH=\"/home/root/.composer/vendor/bin:$PATH\"" >> ~/.bashrc
 
 #Install Drush via composer
 RUN composer global require drush/drush:8.*
 RUN composer global update
+RUN composer self-update
 RUN ln -sf ~/.composer/vendor/bin/drush /usr/bin/drush
 
 
