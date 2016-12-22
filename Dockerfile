@@ -28,8 +28,8 @@ RUN ln -sf ~/.composer/vendor/bin/drush /usr/bin/drush
 
 
 #Install Drupal Console
-RUN curl -LSs http://drupalconsole.com/installer | php
-RUN mv console.phar /usr/local/bin/drupal
+#RUN curl -LSs http://drupalconsole.com/installer | php
+#RUN mv console.phar /usr/local/bin/drupal
 
 
 # set recommended PHP.ini settings
