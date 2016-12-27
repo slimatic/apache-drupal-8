@@ -27,7 +27,8 @@ RUN composer global update
 RUN composer self-update
 RUN ln -sf ~/.composer/vendor/bin/drush /usr/bin/drush
 
-
+EXPOSE 80
+EXPOSE 443
 #Install Drupal Console
 #RUN curl -LSs http://drupalconsole.com/installer | php
 #RUN mv console.phar /usr/local/bin/drupal
