@@ -24,7 +24,7 @@ RUN echo "export PATH=\"/home/root/.composer/vendor/bin:$PATH\"" >> ~/.bashrc
 #Install Drush via composer
 RUN composer global require drush/drush:8.*
 RUN composer global update
-RUN composer self-update
+#RUN composer self-update
 RUN ln -sf ~/.composer/vendor/bin/drush /usr/bin/drush
 
 EXPOSE 80
