@@ -1,7 +1,8 @@
 # from https://www.drupal.org/requirements/php#drupalversions
 FROM php:5.6-apache
 
-MAINTAINER Ian Lintner <ian.lintner@workiva.com>
+#PREVIOUS MAINTAINER Ian Lintner <ian.lintner@workiva.com>
+MAINTAINER Salim Ibrahim <salim.31@gmail.com>
 
 RUN a2enmod rewrite
 
